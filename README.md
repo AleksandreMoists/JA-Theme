@@ -1,0 +1,2 @@
+# JA-Theme
+Shopify Theme
