@@ -16,17 +16,27 @@ This theme is being developed as a professional, commercial Shopify theme with e
 
 This project is based on Shopify's Dawn theme and includes all standard Dawn functionality as a foundation.
 
-## Team
+### Prerequisites
 
-Internal commercial project - not accepting external contributions.
+Install Shopify CLI (first time only):
 
-## Run Commands
+```bash
+npm install -g @shopify/cli @shopify/theme
+```
+
+### Development Server
 
 Run the development server (from the project root):
 
 ```bash
 shopify theme dev --store=ja-boys-dev.myshopify.com
 ```
+
+This will start a local development server with hot reload at `http://localhost:9292`
+
+## Team
+
+Internal commercial project - not accepting external contributions.
 
 ## Project structure & architecture
 
