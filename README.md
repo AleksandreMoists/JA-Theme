@@ -34,6 +34,8 @@ shopify theme dev --store=ja-boys-dev.myshopify.com
 
 This will start a local development server with hot reload at `http://localhost:9292`
 
+Store password is - 123
+
 ## Team
 
 Internal commercial project - not accepting external contributions.
