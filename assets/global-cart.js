@@ -204,7 +204,7 @@ class CartPerformance {
 
   static measureFromEvent(benchmarkName, event) {
     const metricName = `${CartPerformance.#metric_prefix}:${benchmarkName}`
-    const startMarker = performance.mark(`${metricName}:start`, {
+    performance.mark(`${metricName}:start`, {
       startTime: event.timeStamp
     });
 
