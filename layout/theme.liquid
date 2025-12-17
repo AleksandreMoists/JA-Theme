@@ -31,6 +31,25 @@
     <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+
+    {%- comment -%}Conditional page-specific JavaScript{%- endcomment -%}
+    {%- if template.name == 'product' -%}
+      <script src="{{ 'global-product.js' | asset_url }}" defer="defer"></script>
+      <script src="{{ 'global-cart.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
+    {%- if (template.name == 'cart' or settings.cart_type == 'drawer') and template.name != 'product' -%}
+      <script src="{{ 'global-cart.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
+    {%- if template.name == 'index' or template.name == 'collection' -%}
+      <script src="{{ 'global-slider.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
+    {%- if template.name == 'customers/addresses' or template.name == 'contact' -%}
+      <script src="{{ 'global-shopify-legacy.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
     <script src="{{ 'details-disclosure.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'details-modal.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'search-form.js' | asset_url }}" defer="defer"></script>
