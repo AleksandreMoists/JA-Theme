@@ -274,25 +274,56 @@
       }
     {% endstyle %}
 
-    {{ 'base.css' | asset_url | stylesheet_tag }}
-    <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
+    {%- comment -%}=== CSS BUNDLE LOADING STRATEGY ==={%- endcomment -%}
+    {%- comment -%}Core bundle: Loaded on all pages (base styles + universal components){%- endcomment -%}
+    {{ 'bundle-core.css' | asset_url | stylesheet_tag }}
 
-    {%- if settings.cart_type == 'drawer' -%}
-      <link rel="stylesheet" href="{{ 'component-cart-drawer.css' | asset_url }}" media="print" onload="this.media='all'">
-      <noscript><link rel="stylesheet" href="{{ 'component-cart-drawer.css' | asset_url }}"></noscript>
+    {%- comment -%}Product bundle: Product page specific styles{%- endcomment -%}
+    {%- if template.name == 'product' -%}
+      <link rel="stylesheet" href="{{ 'bundle-product.css' | asset_url }}" media="print" onload="this.media='all'">
+      <noscript><link rel="stylesheet" href="{{ 'bundle-product.css' | asset_url }}"></noscript>
+    {%- endif -%}
 
-      <link rel="stylesheet" href="{{ 'component-cart.css' | asset_url }}" media="print" onload="this.media='all'">
-      <noscript><link rel="stylesheet" href="{{ 'component-cart.css' | asset_url }}"></noscript>
+    {%- comment -%}Cart bundle: Cart functionality (drawer, notification, items){%- endcomment -%}
+    {%- if template.name == 'cart' or settings.cart_type == 'drawer' -%}
+      <link rel="stylesheet" href="{{ 'bundle-cart.css' | asset_url }}" media="print" onload="this.media='all'">
+      <noscript><link rel="stylesheet" href="{{ 'bundle-cart.css' | asset_url }}"></noscript>
+    {%- endif -%}
 
-      <link rel="stylesheet" href="{{ 'component-totals.css' | asset_url }}" media="print" onload="this.media='all'">
-      <noscript><link rel="stylesheet" href="{{ 'component-totals.css' | asset_url }}"></noscript>
+    {%- comment -%}Collection bundle: Collection/search pages with filtering{%- endcomment -%}
+    {%- if template.name == 'collection' or template.name == 'search' -%}
+      <link rel="stylesheet" href="{{ 'bundle-collection.css' | asset_url }}" media="print" onload="this.media='all'">
+      <noscript><link rel="stylesheet" href="{{ 'bundle-collection.css' | asset_url }}"></noscript>
+    {%- endif -%}
 
-      <link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}" media="print" onload="this.media='all'">
-      <noscript><link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}"></noscript>
+    {%- comment -%}Slider bundle: Homepage sliders, slideshows, image sections{%- endcomment -%}
+    {%- if template.name == 'index' -%}
+      <link rel="stylesheet" href="{{ 'bundle-slider.css' | asset_url }}" media="print" onload="this.media='all'">
+      <noscript><link rel="stylesheet" href="{{ 'bundle-slider.css' | asset_url }}"></noscript>
+    {%- endif -%}
 
-      <link rel="stylesheet" href="{{ 'component-discounts.css' | asset_url }}" media="print" onload="this.media='all'">
-      <noscript><link rel="stylesheet" href="{{ 'component-discounts.css' | asset_url }}"></noscript>
+    {%- comment -%}Content bundle: Blog, articles, rich text, multicolumn{%- endcomment -%}
+    {%- if template.name == 'blog' or template.name == 'article' or template.name == 'page' -%}
+      <link rel="stylesheet" href="{{ 'bundle-content.css' | asset_url }}" media="print" onload="this.media='all'">
+      <noscript><link rel="stylesheet" href="{{ 'bundle-content.css' | asset_url }}"></noscript>
+    {%- endif -%}
 
+    {%- comment -%}Customer bundle: Account pages, password, gift cards{%- endcomment -%}
+    {%- if template contains 'customers' or template.name == 'password' or template.name == 'gift_card' -%}
+      <link rel="stylesheet" href="{{ 'bundle-customer.css' | asset_url }}" media="print" onload="this.media='all'">
+      <noscript><link rel="stylesheet" href="{{ 'bundle-customer.css' | asset_url }}"></noscript>
+    {%- endif -%}
+
+    {%- comment -%}Quick order bundle: B2B quick order functionality{%- endcomment -%}
+    {%- if template.name contains 'quick-order' -%}
+      <link rel="stylesheet" href="{{ 'bundle-quick-order.css' | asset_url }}" media="print" onload="this.media='all'">
+      <noscript><link rel="stylesheet" href="{{ 'bundle-quick-order.css' | asset_url }}"></noscript>
+    {%- endif -%}
+
+    {%- comment -%}Utilities bundle: Conditional components (predictive search, video, etc.){%- endcomment -%}
+    {%- if settings.predictive_search_enabled -%}
+      <link rel="stylesheet" href="{{ 'bundle-utilities.css' | asset_url }}" media="print" onload="this.media='all'">
+      <noscript><link rel="stylesheet" href="{{ 'bundle-utilities.css' | asset_url }}"></noscript>
     {%- endif -%}
 
     {%- unless settings.type_body_font.system? -%}
@@ -307,17 +338,7 @@
     {%- endunless -%}
 
     {%- if localization.available_countries.size > 1 or localization.available_languages.size > 1 -%}
-      {{ 'component-localization-form.css' | asset_url | stylesheet_tag: preload: true }}
       <script src="{{ 'localization-form.js' | asset_url }}" defer="defer"></script>
-    {%- endif -%}
-
-    {%- if settings.predictive_search_enabled -%}
-      <link
-        rel="stylesheet"
-        href="{{ 'component-predictive-search.css' | asset_url }}"
-        media="print"
-        onload="this.media='all'"
-      >
     {%- endif -%}
 
     <script>
