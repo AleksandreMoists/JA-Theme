@@ -1,0 +1,389 @@
+/* ============================================
+   Hero Banner JA Custom Styles
+   ============================================ */
+
+/* Base container */
+.hero-banner-ja {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow: hidden;
+}
+
+.hero-banner-ja-section {
+  padding: 0;
+  margin: 0;
+}
+
+/* Slider wrapper */
+.hero-banner-ja__slider {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin: 0;
+  gap: 0;
+  overflow-y: hidden;
+}
+
+/* Individual slide */
+.hero-banner-ja__slide {
+  position: relative;
+  width: 100%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* Slide heights - matching Figma design (800px = 50rem) */
+.hero-banner-ja--small .hero-banner-ja__slide {
+  min-height: 40rem;
+}
+
+.hero-banner-ja--medium .hero-banner-ja__slide {
+  min-height: 50rem;
+}
+
+.hero-banner-ja--large .hero-banner-ja__slide {
+  min-height: 50rem; /* 800px = 50rem */
+}
+
+@media screen and (max-width: 749px) {
+  .hero-banner-ja--small .hero-banner-ja__slide {
+    min-height: 30rem;
+  }
+
+  .hero-banner-ja--medium .hero-banner-ja__slide {
+    min-height: 40rem;
+  }
+
+  .hero-banner-ja--large .hero-banner-ja__slide {
+    min-height: 50rem;
+  }
+}
+
+/* Background image container */
+.hero-banner-ja__media {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.hero-banner-ja__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Dark overlay for text readability - matching Figma gradient */
+.hero-banner-ja__media::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 47.812%);
+  z-index: 1;
+}
+
+.hero-banner-ja__media.placeholder {
+  background-color: rgba(var(--color-foreground), 0.04);
+}
+
+/* Content wrapper - matching Figma spacing (80px left padding) */
+.hero-banner-ja__content {
+  position: relative;
+  z-index: 2;
+  max-width: 520px; /* Matching Figma width */
+  padding: 4rem 1.5rem;
+  color: #FFFFFF;
+}
+
+@media screen and (min-width: 750px) {
+  .hero-banner-ja__content {
+    padding: 2rem 3rem;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .hero-banner-ja__content {
+    padding: 2rem 5rem; /* 80px = 5rem */
+  }
+}
+
+/* Eyebrow text - matching Figma (14px, 1.4 letter-spacing) */
+.hero-banner-ja__eyebrow {
+  font-family: var(--font-body-family);
+  font-size: 0.875rem; /* 14px = 0.875rem */
+  font-weight: 400;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0 0 1.5rem 0; /* 24px = 1.5rem */
+  line-height: 1.43; /* 20px line height */
+}
+
+@media screen and (min-width: 750px) {
+  .hero-banner-ja__eyebrow {
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Headline - matching Figma (72px, Lora font, -2.88px letter spacing) */
+.hero-banner-ja__headline {
+  font-family: 'Lora', var(--font-hero-family), serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: clamp(2.5rem, 7vw, 4.5rem); /* 72px = 4.5rem */
+  line-height: 1.1;
+  color: #FFFFFF;
+  margin: 0 0 2rem 0; /* 32px = 2rem */
+  letter-spacing: -2.88px;
+}
+
+/* Italic style for first word (use <em> tag) */
+.hero-banner-ja__headline em {
+  font-family: 'Lora', var(--font-hero-family), serif;
+  font-style: italic;
+  font-weight: 400;
+}
+
+@media screen and (min-width: 750px) {
+  .hero-banner-ja__headline {
+    font-size: clamp(3.5rem, 8vw, 5.5rem);
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .hero-banner-ja__headline {
+    font-size: 4.5rem; /* 72px */
+  }
+}
+
+/* Subheading - matching Figma (20px, 1.6 line height, max 392px) */
+.hero-banner-ja__subheading {
+  font-family: var(--font-body-family);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 3rem 0; /* 48px = 3rem */
+  max-width: 392px;
+}
+
+@media screen and (min-width: 750px) {
+  .hero-banner-ja__subheading {
+    font-size: 1.25rem; /* 20px = 1.25rem */
+  }
+}
+
+/* Button - matching Figma (48px height, 24px padding, shadow) */
+.hero-banner-ja__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem; /* 8px */
+  min-width: 180px;
+  height: 48px;
+  padding: 0 1.5rem; /* 24px */
+  background-color: #FFFFFF;
+  color: #121212;
+  font-family: var(--font-body-family);
+  font-size: 1rem; /* 16px */
+  font-weight: 400;
+  letter-spacing: 0.32px;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  border-radius: 1px;
+  cursor: pointer;
+  box-shadow: 0px 4px 20px -4px rgba(60, 57, 15, 0.15);
+  transition: background-color 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+}
+
+.hero-banner-ja__button:hover {
+  background-color: rgba(255, 255, 255, 0.95);
+  box-shadow: 0px 6px 24px -4px rgba(60, 57, 15, 0.2);
+  transform: translateY(-1px);
+}
+
+.hero-banner-ja__button:active {
+  transform: translateY(0);
+  box-shadow: 0px 2px 16px -4px rgba(60, 57, 15, 0.15);
+}
+
+.hero-banner-ja__button .icon-arrow-right {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.hero-banner-ja__button:hover .icon-arrow-right {
+  transform: translateX(2px);
+}
+
+/* Carousel controls wrapper - matching Figma (pill container with backdrop blur) */
+.hero-banner-ja__controls {
+  position: absolute;
+  bottom: 4rem; /* 64px */
+  right: 5rem; /* 80px */
+  display: flex;
+  align-items: center;
+  height: 48px;
+  background-color: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 9999px;
+  z-index: 4;
+}
+
+@media screen and (max-width: 749px) {
+  .hero-banner-ja__controls {
+    bottom: 2rem;
+    right: 2rem;
+  }
+}
+
+@media screen and (max-width: 990px) {
+  .hero-banner-ja__controls {
+    bottom: 3rem;
+    right: 3rem;
+  }
+}
+
+/* Control buttons (prev/next) */
+.hero-banner-ja__control-btn {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  transition: opacity 0.25s ease;
+}
+
+.hero-banner-ja__control-btn:hover {
+  opacity: 0.7;
+}
+
+.hero-banner-ja__control-btn .svg-wrapper {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-banner-ja__control-btn svg {
+  width: 100%;
+  height: 100%;
+}
+
+.hero-banner-ja__control-btn path {
+  fill: rgba(255, 255, 255, 0.9);
+}
+
+.hero-banner-ja__control-btn--prev {
+  padding-left: 4px;
+  border-radius: 9999px 0 0 9999px;
+}
+
+.hero-banner-ja__control-btn--prev .svg-wrapper {
+  transform: rotate(180deg);
+}
+
+.hero-banner-ja__control-btn--next {
+  padding-right: 0px;
+  border-radius: 0 9999px 9999px 0;
+  transform: rotate(180deg) scaleY(-1);
+}
+
+/* Dot indicators */
+.hero-banner-ja__dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem; /* 8px */
+  padding: 0 0.25rem; /* 4px */
+  height: 48px;
+}
+
+.hero-banner-ja__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.4);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.hero-banner-ja__dot:hover {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.hero-banner-ja__dot.slider-counter__link--active,
+.hero-banner-ja__dot.active {
+  background-color: #FFFFFF;
+}
+
+
+/* Accessibility */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Loading placeholder */
+.hero-banner-ja--placeholder .hero-banner-ja__slide {
+  background-color: rgba(var(--color-foreground), 0.04);
+}
+
+/* Animation support */
+@media (prefers-reduced-motion: reduce) {
+  .hero-banner-ja__button,
+  .hero-banner-ja__dot,
+  .hero-banner-ja__control-btn,
+  .hero-banner-ja__media::after {
+    transition: none;
+  }
+}
+
+/* Focus styles for accessibility */
+.hero-banner-ja__button:focus-visible,
+.hero-banner-ja__dot:focus-visible,
+.hero-banner-ja__control-btn:focus-visible {
+  outline: 2px solid #FFFFFF;
+  outline-offset: 3px;
+}
+
+/* High contrast mode support */
+@media (forced-colors: active) {
+  .hero-banner-ja__control-btn path {
+    fill: CanvasText;
+  }
+
+  .hero-banner-ja__button {
+    border: 1px solid ButtonText;
+  }
+}

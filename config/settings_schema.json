@@ -143,6 +143,21 @@
         "unit": "%",
         "label": "t:settings_schema.typography.settings.body_scale.label",
         "default": 100
+      },
+      {
+        "type": "header",
+        "content": "Hero Banner Typography"
+      },
+      {
+        "type": "paragraph",
+        "content": "Custom font for large hero headlines (e.g., 'Chasing the Sun'). Recommended: Lora (serif, italic style)."
+      },
+      {
+        "type": "font_picker",
+        "id": "type_hero_font",
+        "default": "lora_n4",
+        "label": "Hero headline font",
+        "info": "Used for large display text in hero banners. Lora provides elegant italic style."
       }
     ]
   },
