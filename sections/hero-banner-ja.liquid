@@ -31,7 +31,7 @@
 
   <div
     class="hero-banner-ja__slider slider slider--everywhere hero-banner-ja--{{ section.settings.slide_height }}{% if section.blocks.first.settings.image == blank %} hero-banner-ja--placeholder{% endif %}"
-    id="HeroBanner-{{ section.id }}"
+`    id="Slider-{{ section.id }}"
     aria-live="polite"
     aria-atomic="true"
     data-autoplay="{{ section.settings.auto_rotate }}"
@@ -39,13 +39,13 @@
   >
     {%- for block in section.blocks -%}
       <style>
-        #HeroSlide-{{ section.id }}-{{ forloop.index }} .hero-banner-ja__media::after {
+        #Slide-{{ section.id }}-{{ forloop.index }} .hero-banner-ja__media::after {
           opacity: {{ block.settings.image_overlay_opacity | divided_by: 100.0 }};
         }
       </style>
       <div
-        class="hero-banner-ja__slide slider__slide"
-        id="HeroSlide-{{ section.id }}-{{ forloop.index }}"
+        class="hero-banner-ja__slide slider__slide slideshow__slide"
+        id="Slide-{{ section.id }}-{{ forloop.index }}"
         {{ block.shopify_attributes }}
         role="group"
         aria-roledescription="{{ 'sections.slideshow.slide' | t }}"
@@ -117,7 +117,7 @@
         class="hero-banner-ja__control-btn hero-banner-ja__control-btn--prev"
         name="previous"
         aria-label="{{ 'sections.slideshow.previous_slideshow' | t }}"
-        aria-controls="HeroBanner-{{ section.id }}"
+        aria-controls="Slider-{{ section.id }}"
       >
         {% render 'icon-arrow-left' %}
       </button>
@@ -126,7 +126,7 @@
           <button
             class="hero-banner-ja__dot slider-counter__link"
             aria-label="{{ 'sections.slideshow.load_slide' | t }} {{ forloop.index }} {{ 'general.slider.of' | t }} {{ forloop.length }}"
-            aria-controls="HeroBanner-{{ section.id }}"
+            aria-controls="Slider-{{ section.id }}"
           >
             <span class="visually-hidden">{{ forloop.index }}</span>
           </button>
@@ -137,7 +137,7 @@
         class="hero-banner-ja__control-btn hero-banner-ja__control-btn--next"
         name="next"
         aria-label="{{ 'sections.slideshow.next_slideshow' | t }}"
-        aria-controls="HeroBanner-{{ section.id }}"
+        aria-controls="Slider-{{ section.id }}"
       >
         {% render 'icon-arrow-right' %}
       </button>
