@@ -278,17 +278,9 @@
   opacity: 0.7;
 }
 
-.hero-banner-ja__control-btn .svg-wrapper {
+.hero-banner-ja__control-btn svg {
   width: 20px;
   height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.hero-banner-ja__control-btn svg {
-  width: 100%;
-  height: 100%;
 }
 
 .hero-banner-ja__control-btn path {
@@ -300,14 +292,9 @@
   border-radius: 9999px 0 0 9999px;
 }
 
-.hero-banner-ja__control-btn--prev .svg-wrapper {
-  transform: rotate(180deg);
-}
-
 .hero-banner-ja__control-btn--next {
-  padding-right: 0px;
+  padding-right: 4px;
   border-radius: 0 9999px 9999px 0;
-  transform: rotate(180deg) scaleY(-1);
 }
 
 /* Dot indicators */
